@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "./Button";
-import { action } from "@storybook/addon-actions";
 
 export default {
   component: Button,
@@ -11,7 +10,7 @@ export default {
 const handleClickButton = (
   e: React.SyntheticEvent<HTMLButtonElement>
 ): void => {
-  console.log("fuck!");
+  console.log("?!", e);
 };
 
 const actionsData = {

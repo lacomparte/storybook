@@ -7,3 +7,5 @@ yarn-error.log*
 
 # VSCode
 .vscode
+
+.DS_Store

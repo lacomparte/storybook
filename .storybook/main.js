@@ -10,4 +10,14 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
   ],
+
+  webpackFinal: async (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@components": path.resolve(__dirname, "../src/components"),
+      "@assets": path.resolve(__dirname, "../src/assets"),
+    };
+
+    return config;
+  },
 };
