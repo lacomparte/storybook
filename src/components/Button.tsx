@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledWrapper = styled.button<ButtonProps>`
+const StyledWrapper = styled.button<StyledButtonProps>`
   width: auto;
   height: 30px;
   color: ${({ primary }) => (primary ? "white" : "black")};
@@ -11,8 +11,13 @@ const StyledWrapper = styled.button<ButtonProps>`
 `;
 
 const Button = ({
-  button: { primary, outlined, rounded, border, text, handleClickButton },
-}: ButtonProps) => {
+  primary,
+  outlined,
+  rounded,
+  border,
+  text,
+  handleClickButton,
+}: StyledButtonProps) => {
   return (
     <StyledWrapper
       primary={primary}

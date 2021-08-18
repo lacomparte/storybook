@@ -11,49 +11,43 @@ export default {
 const handleClickButton = (
   e: React.SyntheticEvent<HTMLButtonElement>
 ): void => {
-  console.log(e.target);
+  console.log("fuck!");
 };
 
-export const buttonData = {
+const actionsData = {
+  handleClickButton,
+};
+
+const Template = (args: StyledButtonProps) => {
+  return <Button {...args} {...actionsData} />;
+};
+
+export const buttonNormal = Template.bind({});
+buttonNormal.args = {
   primary: false,
   outlined: false,
   rounded: false,
   border: false,
+  text: "BUTTON_NORMAL",
+};
+
+export const buttonPrimary = Template.bind({});
+buttonPrimary.args = {
+  ...buttonNormal.args,
+  primary: true,
   text: "BUTTON_PRIMARY",
-  handleClickButton,
 };
 
-const actionsData = {
-  handleClickButton: action("handleClickButton"),
+export const buttonOutlined = Template.bind({});
+buttonOutlined.args = {
+  ...buttonNormal.args,
+  outlined: true,
+  text: "BUTTON_OUTLINED",
 };
 
-export const Default = () => (
-  <Button button={{ ...buttonData }} {...actionsData} />
-);
-
-export const Primary = () => (
-  <Button button={{ ...buttonData, primary: true }} {...actionsData} />
-);
-export const Outlined = () => (
-  <Button
-    button={{
-      ...buttonData,
-      primary: false,
-      rounded: false,
-      border: true,
-      text: "BUTTON_OUTLINED",
-    }}
-    {...actionsData}
-  />
-);
-export const RoundedPrimary = () => (
-  <Button
-    button={{
-      ...buttonData,
-      primary: false,
-      rounded: true,
-      text: "BUTTON_ROUNDED",
-    }}
-    {...actionsData}
-  />
-);
+export const buttonRounded = Template.bind({});
+buttonRounded.args = {
+  ...buttonNormal.args,
+  rounded: true,
+  text: "BUTTON_ROUNDED",
+};

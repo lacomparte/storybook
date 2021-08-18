@@ -1,0 +1,3 @@
+interface ButtonProps {
+  handleClickButton(): void;
+}
