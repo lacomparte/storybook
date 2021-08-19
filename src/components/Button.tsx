@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "@assets/svg/Logo";
+import Logo from "../assets/svg/Logo";
 
 const StyledWrapper = styled.button<StyledButtonProps>`
   width: auto;
@@ -25,7 +25,7 @@ const Button = ({
       outlined={outlined}
       rounded={rounded}
       border={border}
-      onClick={(e) => handleClickButton(e)}
+      onClick={(e) => handleClickButton && handleClickButton(e)}
     >
       <Logo />
       {text}

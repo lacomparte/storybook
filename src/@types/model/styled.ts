@@ -1,8 +1,13 @@
 interface StyledButtonProps {
   primary: boolean;
-  outlined: boolean;
-  rounded: boolean;
-  border: boolean;
-  text: string;
-  handleClickButton(): void;
+  outlined?: boolean;
+  rounded?: boolean;
+  border?: boolean;
+  text?: string;
+  label?: string;
+  handleClickButton?(e: React.SyntheticEvent<HTMLButtonElement>): void;
+}
+export interface StyledIfTab {
+  active?: boolean;
+  handleClickButton?(e: React.SyntheticEvent<HTMLButtonElement>): void;
 }

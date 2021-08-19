@@ -1,4 +1,5 @@
 import React from "react";
+import { Story } from "@storybook/react";
 import Button from "./Button";
 
 export default {
@@ -10,14 +11,14 @@ export default {
 const handleClickButton = (
   e: React.SyntheticEvent<HTMLButtonElement>
 ): void => {
-  console.log("?!", e);
+  console.log("?!", e.currentTarget);
 };
 
 const actionsData = {
   handleClickButton,
 };
 
-const Template = (args: StyledButtonProps) => {
+const Template: Story<StyledButtonProps> = (args) => {
   return <Button {...args} {...actionsData} />;
 };
 
