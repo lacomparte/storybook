@@ -7,7 +7,3 @@ interface StyledButtonProps {
   label?: string;
   handleClickButton?(e: React.SyntheticEvent<HTMLButtonElement>): void;
 }
-export interface StyledIfTab {
-  active?: boolean;
-  handleClickButton?(e: React.SyntheticEvent<HTMLButtonElement>): void;
-}

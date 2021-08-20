@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { StyledIfTab } from "../../@types/model/styled";
+import { StyledIfTab } from "../../@types/props";
 import { IfTab } from "../../@types/props";
 
 const StyledTab = styled.button<StyledIfTab>`
@@ -23,7 +23,12 @@ const StyledTab = styled.button<StyledIfTab>`
  **/
 
 const Tab = ({ active, label, rest }: IfTab) => {
-  const [toggleActive, setToggleActive] = useState(active);
+  const [toggleActive, setToggleActive] = useState(false);
+
+  useEffect(() => {
+    setToggleActive(active);
+  }, [active]);
+
   const handleClickButton = (toggleActive: boolean): void => {
     setToggleActive(!toggleActive);
   };

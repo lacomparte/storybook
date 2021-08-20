@@ -19,6 +19,14 @@ module.exports = {
       "@components": path.resolve(__dirname, "../src/components"),
       "@assets": path.resolve(__dirname, "../src/assets"),
     };
+    config.module.rules.push({
+      test: /\.(ts|tsx)$/,
+      loader: require.resolve("babel-loader"),
+      options: {
+        presets: [["react-app", { flow: false, typescript: true }]],
+      },
+    });
+    config.resolve.extensions.push(".ts", ".tsx");
     return config;
   },
 };

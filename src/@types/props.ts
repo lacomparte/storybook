@@ -1,14 +1,13 @@
-import { StyledIfTab } from "./model/styled";
+export interface StyledIfTab {
+  active: boolean;
+  handleClickButton?(e: React.SyntheticEvent<HTMLButtonElement>): void;
+}
 export interface IfTab extends StyledIfTab {
   label: string;
-  size: string;
   rest?: object;
 }
-export interface IfTabModule {
-  tabs: {
-    active: boolean;
-    label: string;
-    size: string;
-    rest?: object;
-  }[];
+export interface IfTabParent {
+  active: boolean;
+  label: string;
+  rest?: object;
 }

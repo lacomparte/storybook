@@ -1,9 +1,8 @@
 import React from "react";
 import { Story } from "@storybook/react";
 import Tab from "./Tab";
-import TabModule from "./TabModule";
-import { IfTab, IfTabModule } from "../../@types/props";
-// import { StyledIfTab } from "../../@types/model/styled";
+import TabParent from "./TabParent";
+import { IfTab, IfTabParent } from "../../@types/props";
 
 export default {
   component: Tab,
@@ -26,22 +25,24 @@ TabComponent.args = { ...TabDefaultData };
 export const TabActiveComponent = TemplateTab.bind({});
 TabActiveComponent.args = { ...TabDefaultData, active: true };
 
-const TemplateTabModule: Story<IfTabModule> = (args) => <TabModule {...args} />;
-const TabModuleDefaultData = [
+const TabParentDefaultData = [
   {
-    active: false,
-    size: "small",
-    label: "기본 탭",
+    active: true,
+    label: "기본 탭1",
   },
   {
     active: false,
-    size: "small",
-    label: "기본 탭",
+    label: "기본 탭2",
   },
 ];
 
-export const TabModuleComponent = TemplateTabModule.bind({});
-TabModuleComponent.args = { tabs: [...TabModuleDefaultData] };
+const Tabs = TabParentDefaultData.map(({ active, label }, idx) => (
+  <Tab active={active} label={label} key={idx} />
+));
+
+const TemplateTabParent: Story<JSX.Element> = () => <TabParent tabs={Tabs} />;
+
+export const TabParentComponent = TemplateTabParent.bind({});
 
 TabComponent.parameters = {
   docs: {
@@ -55,7 +56,7 @@ TabActiveComponent.parameters = {
   },
 };
 
-TabModuleComponent.parameters = {
+TabParentComponent.parameters = {
   docs: {
     storyDescription: "- 탭 모듈",
   },
