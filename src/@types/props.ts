@@ -1,13 +1,11 @@
-export interface StyledIfTab {
+interface StyledIfTab {
   active: boolean;
   handleClickButton?(e: React.SyntheticEvent<HTMLButtonElement>): void;
 }
-export interface IfTab extends StyledIfTab {
+interface TabProps {
+  id: number;
   label: string;
-  rest?: object;
-}
-export interface IfTabParent {
-  active: boolean;
-  label: string;
-  rest?: object;
+  handleClickTab?: (id: number) => {};
+  rest?: any;
+  activeTab?: boolean;
 }

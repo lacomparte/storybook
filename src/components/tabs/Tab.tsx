@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { StyledIfTab } from "../../@types/props";
-import { IfTab } from "../../@types/props";
 
 const StyledTab = styled.button<StyledIfTab>`
   display: inline-flex;
@@ -14,6 +12,11 @@ const StyledTab = styled.button<StyledIfTab>`
   border: 1px solid ${({ active }) => (active ? "black" : "#E5E5E5")};
   box-sizing: border-box;
   background-color: white;
+  cursor: pointer;
+
+  & + & {
+    margin-left: 10px;
+  }
 `;
 
 /**
@@ -22,23 +25,14 @@ const StyledTab = styled.button<StyledIfTab>`
  - 클릭시 active 상태로 전환
  **/
 
-const Tab = ({ active, label, rest }: IfTab) => {
-  const [toggleActive, setToggleActive] = useState(false);
-
-  useEffect(() => {
-    setToggleActive(active);
-  }, [active]);
-
-  const handleClickButton = (toggleActive: boolean): void => {
-    setToggleActive(!toggleActive);
+const Tab = ({ id, label, activeTab, handleClickTab }: TabProps) => {
+  const handleClickButton = () => {
+    if (handleClickTab) handleClickTab(id);
   };
 
+  const isActive = id === Number(activeTab);
   return (
-    <StyledTab
-      active={toggleActive}
-      onClick={() => handleClickButton(toggleActive)}
-      {...rest}
-    >
+    <StyledTab active={isActive} onClick={handleClickButton}>
       {label}
     </StyledTab>
   );

@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Story } from "@storybook/react";
 import Tab from "./Tab";
 import TabParent from "./TabParent";
-import { IfTab, IfTabParent } from "../../@types/props";
 
 export default {
   component: Tab,
@@ -12,10 +11,9 @@ export default {
   },
 };
 
-const TemplateTab: Story<IfTab> = (args) => <Tab {...args} />;
+const TemplateTab: Story<TabProps> = (args) => <Tab {...args} />;
 const TabDefaultData = {
-  active: false,
-  size: "small",
+  id: 0,
   label: "기본 탭",
 };
 
@@ -23,24 +21,34 @@ export const TabComponent = TemplateTab.bind({});
 TabComponent.args = { ...TabDefaultData };
 
 export const TabActiveComponent = TemplateTab.bind({});
-TabActiveComponent.args = { ...TabDefaultData, active: true };
+TabActiveComponent.args = { ...TabDefaultData };
 
 const TabParentDefaultData = [
   {
-    active: true,
+    id: 0,
     label: "기본 탭1",
   },
   {
-    active: false,
+    id: 1,
     label: "기본 탭2",
+  },
+  {
+    id: 2,
+    label: "기본 탭3",
+  },
+  {
+    id: 3,
+    label: "기본 탭4",
   },
 ];
 
-const Tabs = TabParentDefaultData.map(({ active, label }, idx) => (
-  <Tab active={active} label={label} key={idx} />
-));
+const Tabs = TabParentDefaultData.map(({ label, id }: TabProps, idx) => {
+  return <Tab label={label} key={idx} id={id} />;
+});
 
-const TemplateTabParent: Story<JSX.Element> = () => <TabParent tabs={Tabs} />;
+const TemplateTabParent: Story<any> = () => {
+  return <TabParent>{Tabs}</TabParent>;
+};
 
 export const TabParentComponent = TemplateTabParent.bind({});
 

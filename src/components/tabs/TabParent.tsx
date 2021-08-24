@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const StyledTabParent = styled.div`
@@ -11,8 +11,19 @@ const StyledTabParent = styled.div`
   padding: 0 5px;
 `;
 
-const TabParent = ({ tabs }: { tabs: JSX.Element[] }) => {
-  return <StyledTabParent role="tabgroup">{tabs}</StyledTabParent>;
+const TabParent = ({ children }: { children: JSX.Element[] }) => {
+  const [activeTab, setActiveTab] = useState(0);
+  const handleClickTab = (idx: number) => {
+    setActiveTab(idx);
+  };
+  const Tab = children.map((item: JSX.Element) => {
+    return React.cloneElement(item, {
+      handleClickTab: () => handleClickTab(item.props.id),
+      activeTab,
+    });
+  });
+
+  return <StyledTabParent role="tabgroup">{Tab}</StyledTabParent>;
 };
 
 export default TabParent;
