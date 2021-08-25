@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Story } from "@storybook/react";
 import Tab from "./Tab";
 import TabParent from "./TabParent";
@@ -20,8 +20,11 @@ const TabDefaultData = {
 export const TabComponent = TemplateTab.bind({});
 TabComponent.args = { ...TabDefaultData };
 
-export const TabActiveComponent = TemplateTab.bind({});
-TabActiveComponent.args = { ...TabDefaultData };
+TabComponent.parameters = {
+  docs: {
+    storyDescription: "- Default Tab",
+  },
+};
 
 const TabParentDefaultData = [
   {
@@ -42,27 +45,17 @@ const TabParentDefaultData = [
   },
 ];
 
-const Tabs = TabParentDefaultData.map(({ label, id }: TabProps, idx) => {
-  return <Tab label={label} key={idx} id={id} />;
-});
+const Tabs = TabParentDefaultData.map(
+  ({ label, id, ...rest }: TabProps, idx) => {
+    return <Tab label={label} key={idx} id={id} rest={rest} />;
+  }
+);
 
-const TemplateTabParent: Story<any> = () => {
-  return <TabParent>{Tabs}</TabParent>;
-};
+const TemplateTabParent: Story<JSX.Element> = () => (
+  <TabParent>{Tabs}</TabParent>
+);
 
 export const TabParentComponent = TemplateTabParent.bind({});
-
-TabComponent.parameters = {
-  docs: {
-    storyDescription: "- Default Tab",
-  },
-};
-
-TabActiveComponent.parameters = {
-  docs: {
-    storyDescription: "- 활성화 상태",
-  },
-};
 
 TabParentComponent.parameters = {
   docs: {

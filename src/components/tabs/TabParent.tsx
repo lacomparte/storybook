@@ -13,12 +13,12 @@ const StyledTabParent = styled.div`
 
 const TabParent = ({ children }: { children: JSX.Element[] }) => {
   const [activeTab, setActiveTab] = useState(0);
-  const handleClickTab = (idx: number) => {
+  const handleClickButton = (idx: number) => {
     setActiveTab(idx);
   };
   const Tab = children.map((item: JSX.Element) => {
     return React.cloneElement(item, {
-      handleClickTab: () => handleClickTab(item.props.id),
+      handleClickButton: () => handleClickButton(item.props.id),
       activeTab,
     });
   });

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledTab = styled.button<StyledIfTab>`
+const StyledTab = styled.button<StyledTapButton>`
   display: inline-flex;
   align-items: center;
   width: auto;
@@ -22,17 +22,26 @@ const StyledTab = styled.button<StyledIfTab>`
 /**
  - 기본 탭 입니다.
  - 설명을 추가 할 수 있읍니다
- - 클릭시 active 상태로 전환
  **/
 
-const Tab = ({ id, label, activeTab, handleClickTab }: TabProps) => {
-  const handleClickButton = () => {
-    if (handleClickTab) handleClickTab(id);
+const Tab = ({
+  id = 0,
+  label,
+  activeTab = 0,
+  handleClickButton,
+  rest,
+}: TabProps) => {
+  const handleClickTab = () => {
+    if (handleClickButton) {
+      handleClickButton(id);
+    } else {
+      return;
+    }
   };
 
-  const isActive = id === Number(activeTab);
+  const isActive = id === activeTab;
   return (
-    <StyledTab active={isActive} onClick={handleClickButton}>
+    <StyledTab active={isActive} onClick={handleClickTab}>
       {label}
     </StyledTab>
   );
