@@ -2,7 +2,7 @@
   "extends": "./paths.json",
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "./src/@types",
+    "declarationDir": "./@types",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -18,7 +18,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots": ["./src/@types", "./node_modules/@types"]
+    "typeRoots": ["./@types", "./node_modules/@types"]
   },
   "include": ["src/**/**/*", "types/**/*"]
 }
