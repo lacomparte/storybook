@@ -1,4 +1,5 @@
 const path = require("path");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
   typescript: {
@@ -23,10 +24,12 @@ module.exports = {
       test: /\.(ts|tsx)$/,
       loader: require.resolve("babel-loader"),
       options: {
+        exclude: /node_modules/,
         presets: [["react-app", { flow: false, typescript: true }]],
       },
     });
-    config.resolve.extensions.push(".ts", ".tsx");
+    // config.resolve.extensions.push(".ts", ".tsx");
+    config.resolve.plugins.push(new TsconfigPathsPlugin({}));
     return config;
   },
   typescript: {
