@@ -1,7 +1,6 @@
 {
-  "name": "storybook",
+  "name": "react-typescript-mss-storybook",
   "version": "0.1.1",
-  "private": true,
   "dependencies": {
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.11.4",
@@ -20,11 +19,12 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired cross-env BABEL_ENV=production babel src -d build",
+    "build": "cross-env BABEL_ENV=production babel src -d build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "release": "auto shipit"
   },
   "eslintConfig": {
     "extends": [

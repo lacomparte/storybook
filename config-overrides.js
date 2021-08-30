@@ -15,16 +15,6 @@ function overrideConfig(config) {
     ...config.output,
     path: path.resolve(__dirname, "./dist"),
     filename: `${buildName || "bundle"}.js`,
-    babel: {
-      presets: [
-        [
-          "react-app",
-          {
-            absoluteRuntime: false,
-          },
-        ],
-      ],
-    },
   };
 
   config.optimization.runtimeChunk = false;
