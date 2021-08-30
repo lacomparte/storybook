@@ -26,6 +26,7 @@
     "build-storybook": "build-storybook -s public",
     "release": "auto shipit"
   },
+  "main": "index.js",
   "eslintConfig": {
     "extends": [
       "react-app",
