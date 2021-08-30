@@ -16,6 +16,15 @@ function overrideConfig(config) {
     path: path.resolve(__dirname, "./dist"),
     filename: `${buildName || "bundle"}.js`,
   };
+  config.module = {
+    rules: [
+      {
+        loader: "babel-loader",
+        test: "/.(js|tsx)$/",
+        exclude: /node_modules/,
+      },
+    ],
+  };
 
   config.optimization.runtimeChunk = false;
 
