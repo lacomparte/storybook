@@ -13,15 +13,32 @@ export default {
   argTypes: {
     label: {
       description: "SegmentControl 의 이름",
-      defaultValue: 123,
     },
     id: {
       description: "고유 값",
-      defaultValue: 0,
     },
     count: {
       description: "count 가 있을 경우",
-      defaultValue: 0,
+      control: {
+        type: "range",
+        min: 0,
+        max: 9999,
+      },
+    },
+    handleClickButton: {
+      description: "버튼 클릭 event",
+    },
+    activeTab: {
+      description: "활성화된 탭의 id 값",
+      control: {
+        type: "number",
+      },
+    },
+    rest: {
+      description: "나머지 props!",
+    },
+    addStyle: {
+      description: "추가 style",
     },
   },
 };
@@ -51,7 +68,7 @@ const SegmentControlDefaultData = [
   },
   {
     label: "기본 SegmentControl",
-    count: 123,
+    count: 9999,
   },
   {
     label: "기본 SegmentControl",

@@ -44,6 +44,7 @@ const SegmentControl = ({
     }
   };
 
+  const convertedCount = count >= 10000 ? "9999+" : count;
   const isActive = id === activeTab;
   return (
     <StyledSegment
@@ -52,7 +53,7 @@ const SegmentControl = ({
       addStyle={{ ...addStyle }}
     >
       {label}
-      {!!count && <span>{count}</span>}
+      {!!count && <span>{convertedCount}</span>}
     </StyledSegment>
   );
 };
