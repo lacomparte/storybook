@@ -29,4 +29,16 @@ module.exports = {
     config.resolve.extensions.push(".ts", ".tsx");
     return config;
   },
+  typescript: {
+    check: false,
+    checkOptions: {
+      tsconfig: path.resolve(__dirname, "./tsconfig.json"),
+    },
+    reactDocgen: "react-docgen-typescript",
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+    },
+  },
 };
