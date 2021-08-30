@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { StyledSegmentButton, SegmentControlProps } from "src/@types/props";
 
 const StyledSegment = styled.button<StyledSegmentButton>`
   display: inline-flex;

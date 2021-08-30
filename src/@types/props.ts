@@ -1,8 +1,8 @@
-interface StyledTapButton {
+export interface StyledTapButton {
   active: boolean;
   handleClickButton?(e: React.SyntheticEvent<HTMLButtonElement>): void;
 }
-interface TabProps {
+export interface TabProps {
   id: number;
   label: string;
   handleClickButton?: (id: number) => {};
@@ -10,16 +10,16 @@ interface TabProps {
   rest?: any;
 }
 
-interface StyledSegmentButton {
+export interface StyledSegmentButton {
   active: boolean;
   addStyle: AddStyle;
 }
 
-interface AddStyle {
+export interface AddStyle {
   [index: string]: string;
 }
-interface SegmentControlProps {
-  id: number;
+export interface SegmentControlProps {
+  id?: number;
   label: string;
   count: number;
   handleClickButton?: (id: number) => {};

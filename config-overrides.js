@@ -13,8 +13,18 @@ function overrideConfig(config) {
   const { buildName } = PACKAGE;
   config.output = {
     ...config.output,
+    path: path.resolve(__dirname, "./dist"),
     filename: `${buildName || "bundle"}.js`,
-    chunkFilename: "chunk-vendors.js",
+    babel: {
+      presets: [
+        [
+          "react-app",
+          {
+            absoluteRuntime: false,
+          },
+        ],
+      ],
+    },
   };
 
   config.optimization.runtimeChunk = false;

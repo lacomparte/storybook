@@ -2,6 +2,7 @@ import React from "react";
 import { Story } from "@storybook/react";
 import Tab from "./Tab";
 import TabParent from "./TabParent";
+import { TabProps } from "src/@types/props";
 
 export default {
   component: Tab,

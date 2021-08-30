@@ -2,6 +2,7 @@ import React from "react";
 import { Story } from "@storybook/react";
 import SegmentControl from "./SegmentControl";
 import SegmentControlParent from "./SegmentControlParent";
+import { SegmentControlProps } from "src/@types/props";
 
 export default {
   component: SegmentControl,
@@ -45,48 +46,27 @@ segmentControlComponent.parameters = {
 
 const SegmentControlDefaultData = [
   {
-    id: 0,
     label: "기본 SegmentControl",
     count: 0,
   },
   {
-    id: 1,
     label: "기본 SegmentControl",
     count: 123,
   },
   {
-    id: 2,
     label: "기본 SegmentControl",
     count: 0,
   },
 ];
 
-const SegmentControls = SegmentControlDefaultData.map(
-  ({ id, label, count, ...rest }: SegmentControlProps, idx) => {
-    return (
-      <SegmentControl
-        id={id}
-        label={label}
-        count={count}
-        rest={rest}
-        key={idx}
-        addStyle={{
-          flex: "1 1 auto",
-          width: "100%",
-        }}
-      />
-    );
-  }
-);
-
 const TemplateSegmentControlParent: Story<JSX.Element> = () => {
   return (
     <SegmentControlParent>
       {SegmentControlDefaultData.map(
-        ({ id, label, count, ...rest }: SegmentControlProps, idx) => {
+        ({ label, count, ...rest }: SegmentControlProps, idx) => {
           return (
             <SegmentControl
-              id={id}
+              id={idx}
               label={label}
               count={count}
               rest={rest}

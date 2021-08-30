@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { StyledTapButton, TabProps } from "src/@types/props";
 
 const StyledTab = styled.button<StyledTapButton>`
   display: inline-flex;
