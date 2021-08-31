@@ -1,6 +1,6 @@
 {
   "name": "react-typescript-mss-storybook",
-  "version": "0.1.15",
+  "version": "0.1.17",
   "dependencies": {
     "@babel/preset-typescript": "^7.15.0",
     "@svgr/webpack": "^5.5.0",
@@ -27,7 +27,7 @@
     "build-storybook": "build-storybook -s public",
     "release": "auto shipit"
   },
-  "main": "./build/index.js",
+  "main": "dist/index.js",
   "eslintConfig": {
     "extends": [
       "react-app",
