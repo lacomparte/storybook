@@ -1,5 +1,3 @@
-declare module "*.ts";
-
 export interface StyledTapButton {
   active: boolean;
   handleClickButton?(e: React.SyntheticEvent<HTMLButtonElement>): void;
